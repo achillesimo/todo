@@ -15,6 +15,12 @@ hs_err_pid*
 .metadata/
 Servers/
 RemoteSystemsTempFiles/
-**/.settings/
-**/.classpath/
-**/.project/
+
+#folders
+todo-backend/target
+
+# files
+.gitconfig
+todo-backend/.classpath
+todo-backend/.project
+todo-backend/.settings
