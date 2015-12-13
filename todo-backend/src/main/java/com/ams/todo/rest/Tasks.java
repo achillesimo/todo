@@ -19,13 +19,14 @@ import javax.ws.rs.core.Response.Status;
 import com.ams.todo.pojo.Task;
 
 @Path("tasks")
-@Api("tasks")
+@Api(value = "tasks", consumes  = MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class Tasks {
 	
 	@GET
 	@Path("/all")
 	@ApiOperation(value = "Recupere toutes les teches",
+		httpMethod = "GET", 
 	    response = Task.class,
 	    responseContainer = "List")
 	@Consumes(MediaType.APPLICATION_JSON)
