@@ -22,5 +22,7 @@ todo-backend/target
 # files
 .gitconfig
 todo-backend/.classpath
+todo-backend/.DS_Store
 todo-backend/.project
 todo-backend/.settings
+*/**/.DS_Store
