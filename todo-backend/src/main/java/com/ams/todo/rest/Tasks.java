@@ -25,7 +25,7 @@ public class Tasks {
 	
 	@GET
 	@Path("/all")
-	@ApiOperation(value = "Récupère toutes les tâches",
+	@ApiOperation(value = "Recupere toutes les teches",
 	    response = Task.class,
 	    responseContainer = "List")
 	@Consumes(MediaType.APPLICATION_JSON)
