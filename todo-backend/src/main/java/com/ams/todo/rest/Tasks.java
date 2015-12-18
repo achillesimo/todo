@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response.Status;
 
 import com.ams.todo.logique.TaskLogique;
 import com.ams.todo.pojo.Task;
-@Component
+
 @Path("tasks")
 @Api(value = "tasks", consumes  = MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
