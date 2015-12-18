@@ -1,7 +1,5 @@
 package com.ams.todo.rest;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import io.swagger.annotations.Api;
@@ -16,12 +14,16 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import com.ams.todo.pojo.Task;
 
+import com.ams.todo.logique.TaskLogique;
+import com.ams.todo.pojo.Task;
+@Component
 @Path("tasks")
 @Api(value = "tasks", consumes  = MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class Tasks {
+
+	TaskLogique tasksLogique;
 	
 	@GET
 	@Path("/all")
@@ -32,10 +34,10 @@ public class Tasks {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces( MediaType.APPLICATION_JSON )
 	public Response getAllTasks(){
-		List<Task> tasks = new ArrayList<Task>();
-		for (int i = 0; i < 3; i++) {
-			tasks.add(new Task(String.valueOf(i), "name"," description", new Date()));
-		}
+		
+		// Liste des taches depuis la partie logique
+		List<Task> tasks = tasksLogique.getAllTasks();
+		
 		GenericEntity<List<Task>> entity = new GenericEntity<List<Task>>(tasks) {};
 		
 		return Response.status(Status.OK).entity(entity).build();

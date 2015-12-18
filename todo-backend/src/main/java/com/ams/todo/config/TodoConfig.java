@@ -1,19 +1,19 @@
 package com.ams.todo.config;
 
-import io.swagger.jaxrs.listing.ApiListingResource;
-import io.swagger.jaxrs.listing.SwaggerSerializers;
-
 import java.util.HashSet;
 import java.util.Set;
+
+import io.swagger.jaxrs.listing.ApiListingResource;
+import io.swagger.jaxrs.listing.SwaggerSerializers;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import com.ams.todo.contantes.TodoConstantes;
 import com.ams.todo.rest.Tasks;
 
-@ApplicationPath("/api")
+@ApplicationPath(TodoConstantes.PATH_API)
 public class TodoConfig extends Application{
-	
 	@Override
 	public Set<Class<?>> getClasses() {
 		final Set<Class<?>> classes = new HashSet<Class<?>>();
@@ -32,4 +32,5 @@ public class TodoConfig extends Application{
 		classes.add(Tasks.class);
 		
 	}
+	
 }

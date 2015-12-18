@@ -1,22 +1,18 @@
 package com.ams.todo.pojo;
 
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Date;
 
-//@ApiModel(description="Tache")
+@ApiModel(description="Tache")
 public class Task {
-	//@ApiModelProperty(value="Identidiant de la tache")
+	
 	private String id;
 	
-	//@ApiModelProperty(value="Nom de la tache")
 	private String name;
 	
-	//@ApiModelProperty(value="Description de la tache")
 	private String description;
 	
-	//@ApiModelProperty(value = "Date Maximle pour la realisation de la tache")
 	private Date deadLine;
 	
 	public Task(){
