@@ -7,8 +7,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.ams.todo.logique.TaskLogique;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ams.todo.contantes.TodoConstantes;
+import com.ams.todo.logique.TasksLogique;
 import com.ams.todo.pojo.Task;
+import com.ams.todo.repositories.TasksRepository;
 
 /**
  * Class pour les taitements à effectuer sur les taches
@@ -16,8 +21,12 @@ import com.ams.todo.pojo.Task;
  *
  */
 
-public class TaskLogiqueImpl implements TaskLogique{
-
+@Service(TodoConstantes.CHAINE_TASK_LOGIQUE)
+public class TaskLogiqueImpl implements TasksLogique{
+	
+	@Autowired
+	TasksRepository tasksRepository;
+	
 	@Override
 	public List<Task> getAllTasks() {
 		List<Task> tasks = new ArrayList<Task>();
@@ -26,6 +35,12 @@ public class TaskLogiqueImpl implements TaskLogique{
 		}
 		
 		return tasks;
+	}
+
+	@Override
+	public String newTask(Task task) {
+		tasksRepository.newTask(task);
+		return null;
 	}
 
 }
