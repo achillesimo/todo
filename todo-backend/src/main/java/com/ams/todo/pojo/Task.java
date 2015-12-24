@@ -4,10 +4,15 @@ import io.swagger.annotations.ApiModel;
 
 import java.util.Date;
 
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+
 @ApiModel(description="Tache")
+@Entity(value="tache")
 public class Task {
-	
-	private String id;
+	@Id
+	private ObjectId id;
 	
 	private String name;
 	
@@ -25,7 +30,7 @@ public class Task {
 	 * @param description : Description de la tache
 	 * @param deadLine : Date de fin de la tache
 	 */
-	public Task(String id, String name, String description, Date deadLine) {
+	public Task(ObjectId id, String name, String description, Date deadLine) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -34,10 +39,10 @@ public class Task {
 	}
 
 	public String getId() {
-		return id;
+		return id.toHexString();
 	}
 
-	public void setId(String id) {
+	public void setId(ObjectId id) {
 		this.id = id;
 	}
 

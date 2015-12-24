@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Key;
+import org.mongodb.morphia.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
@@ -17,16 +18,17 @@ public class TasksRepositoryImpl implements TasksRepository {
 
 	@Override
 	public List<Task> getAllTasks() {
-		// TODO Auto-generated method stub
-		return null;
+		Datastore datastore = MongoDB.INSTANCE.getDatastore();
+		Query<Task> query = datastore.createQuery(Task.class);
+		List<Task> taches = query.asList();
+		return taches;
 	}
 
 	@Override
 	public String newTask(Task task) {
 		Datastore datastore = MongoDB.INSTANCE.getDatastore();
-		Key<Task> savedTask = datastore.save(task);
-		savedTask.getId();
-		return null;
+		Key<Task> key = datastore.save(task);
+		return key.toString();
 	}
 
 }
