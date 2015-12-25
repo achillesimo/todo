@@ -30,17 +30,14 @@ public class TasksLogiqueImpl implements TasksLogique{
 	
 	@Override
 	public List<Task> getAllTasks() {
-		List<Task> tasks = new ArrayList<Task>();
-		for (int i = 0; i < 3; i++) {
-			tasks.add(new Task(new ObjectId(), "name","description", new Date()));
-		}
+		List<Task> tasks = this.tasksRepository.getAllTasks();
 		
 		return tasks;
 	}
 
 	@Override
 	public String newTask(Task task) {
-		String id = tasksRepository.newTask(task);
+		String id = this.tasksRepository.newTask(task);
 		return id;
 	}
 

@@ -18,7 +18,11 @@ RemoteSystemsTempFiles/
 
 #folders
 todo-backend/target
+todo-backend/target/
 todo-backend/bin
+todo-backend/bin/
+todo-backend/data
+todo-backend/data/
 
 # files
 .gitconfig
