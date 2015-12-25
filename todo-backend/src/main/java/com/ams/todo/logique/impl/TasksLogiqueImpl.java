@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +17,13 @@ import com.ams.todo.pojo.Task;
 import com.ams.todo.repositories.TasksRepository;
 
 /**
- * Class pour les taitements à effectuer sur les taches
+ * Class pour les taitements ï¿½ effectuer sur les taches
  * @author ambougue
  *
  */
 
 @Service(TodoConstantes.CHAINE_TASK_LOGIQUE)
-public class TaskLogiqueImpl implements TasksLogique{
+public class TasksLogiqueImpl implements TasksLogique{
 	
 	@Autowired
 	TasksRepository tasksRepository;
@@ -31,7 +32,7 @@ public class TaskLogiqueImpl implements TasksLogique{
 	public List<Task> getAllTasks() {
 		List<Task> tasks = new ArrayList<Task>();
 		for (int i = 0; i < 3; i++) {
-			tasks.add(new Task(String.valueOf(i), "name","description", new Date()));
+			tasks.add(new Task(new ObjectId(), "name","description", new Date()));
 		}
 		
 		return tasks;
@@ -39,8 +40,8 @@ public class TaskLogiqueImpl implements TasksLogique{
 
 	@Override
 	public String newTask(Task task) {
-		tasksRepository.newTask(task);
-		return null;
+		String id = tasksRepository.newTask(task);
+		return id;
 	}
 
 }
